@@ -48,7 +48,22 @@ app.post('/api/notes', (req, res) => {
     
     res.redirect('/notes');
 });
-
+app.delete('/api/notes/:id', (req, res) => {
+    const noteId = req.params.id;
+  
+    fs.readFile('./db/db.json', (err, data) => {
+      if (err) throw err;
+      let dbFile = JSON.parse(data);
+      const updatedDbFile = dbFile.filter(note => note.id !== noteId);
+  
+      fs.writeFile('./db/db.json', JSON.stringify(updatedDbFile), (err) => {
+        if (err) throw err;
+        console.log('note deleted');
+      });
+    });
+  
+    res.redirect('/notes');
+  });
 
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
