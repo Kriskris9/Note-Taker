@@ -38,7 +38,6 @@ app.post('/api/notes', (req, res) => {
         if(err) throw err;
         let dbFile = JSON.parse(data);
         dbFile.push(newNote);
-        //  write to the file
 
         fs.writeFile('./db/db.json', JSON.stringify(dbFile), (err) => {
             if(err) throw err;
