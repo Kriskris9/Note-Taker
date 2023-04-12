@@ -27,3 +27,5 @@ Please refer to the LICENSE in the repo.
 ![alt](/screenshots/3.png)
 
 ## Deployed Link
+
+https://stark-coast-39946.herokuapp.com/
